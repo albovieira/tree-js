@@ -1,0 +1,136 @@
+{
+    "root": {
+        "name": "root",
+        "value": null,
+        "parent": null,
+        "children": [{
+            "name": "airline",
+            "value": "azul",
+            "parent": {
+                "name": "root",
+                "value": null
+            },
+            "children": [{
+                "name": "isOta",
+                "value": false,
+                "parent": {
+                    "name": "airline",
+                    "value": "azul"
+                },
+                "children": [{
+                    "name": "hasBaggage",
+                    "value": false,
+                    "parent": {
+                        "name": "isOta",
+                        "value": false
+                    },
+                    "children": [{
+                        "name": "ranking",
+                        "value": -1,
+                        "parent": {
+                            "name": "hasBaggage",
+                            "value": false
+                        },
+                        "children": []
+                    }]
+                }, {
+                    "name": "hasBaggage",
+                    "value": true,
+                    "parent": {
+                        "name": "isOta",
+                        "value": false
+                    },
+                    "children": [{
+                        "name": "ranking",
+                        "value": 2,
+                        "parent": {
+                            "name": "hasBaggage",
+                            "value": true
+                        },
+                        "children": []
+                    }, {
+                        "name": "isInternational",
+                        "value": false,
+                        "parent": {
+                            "name": "hasBaggage",
+                            "value": true
+                        },
+                        "children": [{
+                            "name": "ranking",
+                            "value": 3,
+                            "parent": {
+                                "name": "isInternational",
+                                "value": false
+                            },
+                            "children": []
+                        }]
+                    }, {
+                        "name": "isInternational",
+                        "value": true,
+                        "parent": {
+                            "name": "hasBaggage",
+                            "value": true
+                        },
+                        "children": [{
+                            "name": "ranking",
+                            "value": 4,
+                            "parent": {
+                                "name": "isInternational",
+                                "value": true
+                            },
+                            "children": []
+                        }]
+                    }]
+                }]
+            }, {
+                "name": "isOta",
+                "value": true,
+                "parent": {
+                    "name": "airline",
+                    "value": "azul"
+                },
+                "children": [{
+                    "name": "ranking",
+                    "value": 1,
+                    "parent": {
+                        "name": "isOta",
+                        "value": true
+                    },
+                    "children": []
+                }, {
+                    "name": "hasBaggage",
+                    "value": true,
+                    "parent": {
+                        "name": "isOta",
+                        "value": true
+                    },
+                    "children": []
+                }]
+            }]
+        }, {
+            "name": "airline",
+            "value": "gol",
+            "parent": {
+                "name": "root",
+                "value": null
+            },
+            "children": [{
+                "name": "isOta",
+                "value": true,
+                "parent": {
+                    "name": "airline",
+                    "value": "gol"
+                },
+                "children": []
+            }, {
+                "name": "isOta",
+                "value": false,
+                "parent": {
+                    "name": "airline",
+                    "value": "gol"
+                },
+                "children": []
+            }]
+        }]
+    }
+}
