@@ -24,7 +24,7 @@ export class NodeTree {
     };
   }
 
-  getChildren() {
+  getChildren(): NodeTree[] {
     return this.children;
   }
 
@@ -39,7 +39,7 @@ export class NodeTree {
     return this;
   }
 
-  parentIsRoot() {
+  parentIsRoot(): boolean {
     return this.parent === 'root';
   }
 }

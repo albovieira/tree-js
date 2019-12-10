@@ -8,11 +8,11 @@ export class Tree {
     this.root = new NodeTree('root', 'root', null, null);
   }
 
-  show() {
+  get() {
     return this.root;
   }
 
-  build(rawNodes: any[]) {
+  build(rawNodes: any[]): NodeTree {
     const normalizedNodes = rawNodes.map(this.normalize);
     normalizedNodes.forEach(nodes => {
       nodes.forEach((node, key) => {
@@ -24,7 +24,7 @@ export class Tree {
     return this.root;
   }
 
-  private add(
+  add(
     node: Partial<NodeTree>,
     parent?: Partial<NodeTree>
   ) {
@@ -70,14 +70,14 @@ export class Tree {
     return this;
   }
 
-  private transverseByParent(nodes: NodeTree[], parent: Partial<NodeTree>) {
+  transverseByParent(nodes: NodeTree[], parent: Partial<NodeTree>): NodeTree | null {
     for (let i = 0; i < nodes.length; i++) {
       const node = nodes[i];
       if (
-        (node.name === parent.name &&
+          node.name === parent.name &&
           node.value === parent.value &&
-          node.id === parent.id,
-        node.path === parent.path)
+          node.id === parent.id &&
+          node.path === parent.path
       ) {
         return node;
       }
@@ -89,13 +89,13 @@ export class Tree {
     return null;
   }
 
-  private transverseByNodeName(
+ transverseByNodeName(
     nodes: NodeTree[],
     name: string,
-    value: string,
+    value: any,
     id: string,
     parent: Partial<NodeTree>
-  ) {
+  ): NodeTree | null {
     for (let i = 0; i < nodes.length; i++) {
       const node = nodes[i];
       if (parent) {
@@ -126,7 +126,7 @@ export class Tree {
     return null;
   }
 
-  private normalize(nodes: any[]) {
+  normalize(nodes: any[]): NodeTree[] {
     return nodes.map((node, key) => {
       node.id = `${node.airline}-${node.name}-${node.value}`;
       const beforeNode = nodes[key-1];

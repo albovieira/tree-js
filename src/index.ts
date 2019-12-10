@@ -65,4 +65,4 @@ const rawNodes = [
 
 
 tree.build(rawNodes);
-console.log(JSON.stringify(tree.show()));
+console.log(JSON.stringify(tree.get()));
