@@ -143,7 +143,7 @@ describe('Tree', () => {
     });
   });
 
-  it('should the ranking path must have all nodes reference', () => {
+  it('should apply the ranking on the last node', () => {
     const nodes = [
       [
         { name: 'airline', value: 'gol', airline: 'gol' },
