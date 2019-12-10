@@ -2,14 +2,15 @@ export class NodeTree {
   readonly id: string;
   readonly name: string;
   readonly value: any;
-  private path: any | null;
+  readonly path: any | null;
   private parent: any | null;
   private children: NodeTree[];
 
-  constructor(name: string, value: any, id: string) {
+  constructor(id: string, name: string, value: any, path: string | null) {
+    this.id = id;
     this.name = name;
     this.value = value;
-    this.id = id;
+    this.path = path;
     this.parent = null;
     this.children = [];
   }
@@ -18,7 +19,8 @@ export class NodeTree {
     return {
       id: this.parent.id,
       name: this.parent.name,
-      value: this.parent.value
+      value: this.parent.value,
+      path: this.parent.path
     };
   }
 
@@ -28,7 +30,7 @@ export class NodeTree {
 
   addParent(parent: NodeTree) {
     const p = Object.assign({}, parent);
-    this.parent! = { id: p.id, name: p.name, value: p.value };
+    this.parent! = { id: p.id, name: p.name, value: p.value, path: p.path };
     return this;
   }
 

@@ -1,23 +1,46 @@
 import { NodeTree } from './node';
+import { RawNode } from './raw-node';
 
 export class Tree {
   private root: NodeTree;
 
   constructor() {
-    this.root = new NodeTree('root', null, 'root');
+    this.root = new NodeTree('root', 'root', null, null);
   }
 
   show() {
     return this.root;
   }
 
-  add(name: string, value: any, id: string, parent?: Partial<NodeTree>) {
-    const child = new NodeTree(name, value, id);
+  build(rawNodes: any[]) {
+    const normalizedNodes = rawNodes.map(this.normalize);
+    normalizedNodes.forEach(nodes => {
+      nodes.forEach((node, key) => {
+        const parent = nodes[key - 1] || null;
+        this.add(node, parent);
+      });
+    });
+
+    return this.root;
+  }
+
+  private add(
+    node: Partial<NodeTree>,
+    parent?: Partial<NodeTree>
+  ) {
+    const { id, name, value, path } = node;
+    const child = new NodeTree(id, name, value, path);
     const rootChildren = this.root.getChildren();
 
     if (!parent) {
-      const node = this.transverseByNodeName(rootChildren, name, value, id, parent);
-      if (node) {
+      const nodeFound = this.transverseByNodeName(
+        rootChildren,
+        name,
+        value,
+        id,
+        parent
+      );
+      if (nodeFound) {
         return this;
       }
       child.addParent(this.root);
@@ -25,8 +48,14 @@ export class Tree {
       return this;
     }
 
-    const node = this.transverseByNodeName(rootChildren, name, value, id, parent);
-    if (node) {
+    const nodeFound = this.transverseByNodeName(
+      rootChildren,
+      name,
+      value,
+      id,
+      parent
+    );
+    if (nodeFound) {
       return this;
     }
     const parentNode = this.transverseByParent(rootChildren, parent);
@@ -41,10 +70,15 @@ export class Tree {
     return this;
   }
 
-  transverseByParent(nodes: NodeTree[], parent: Partial<NodeTree>) {
+  private transverseByParent(nodes: NodeTree[], parent: Partial<NodeTree>) {
     for (let i = 0; i < nodes.length; i++) {
       const node = nodes[i];
-      if (node.name === parent.name && node.value === parent.value && node.id === parent.id) {
+      if (
+        (node.name === parent.name &&
+          node.value === parent.value &&
+          node.id === parent.id,
+        node.path === parent.path)
+      ) {
         return node;
       }
       if (node.getChildren().length > 0) {
@@ -55,7 +89,7 @@ export class Tree {
     return null;
   }
 
-  transverseByNodeName(
+  private transverseByNodeName(
     nodes: NodeTree[],
     name: string,
     value: string,
@@ -85,8 +119,23 @@ export class Tree {
         id,
         parent
       );
-      if (n) return n;
+      if (n) {
+        return n;
+      }
     }
     return null;
+  }
+
+  private normalize(nodes: any[]) {
+    return nodes.map((node, key) => {
+      node.id = `${node.airline}-${node.name}-${node.value}`;
+      const beforeNode = nodes[key-1];
+      if(beforeNode) {
+        node.path = `${beforeNode.path}~${node.id}`;
+      } else {
+        node.path = `${node.id}`;
+      } 
+      return node;
+    });
   }
 }

@@ -1,135 +1,153 @@
 {
     "root": {
+        "id": "root",
         "name": "root",
         "value": null,
+        "path": null,
         "parent": null,
         "children": [{
-            "name": "airline",
-            "value": "azul",
-            "parent": {
-                "name": "root",
-                "value": null
-            },
-            "children": [{
-                "name": "isOta",
-                "value": false,
-                "parent": {
-                    "name": "airline",
-                    "value": "azul"
-                },
-                "children": [{
-                    "name": "hasBaggage",
-                    "value": false,
-                    "parent": {
-                        "name": "isOta",
-                        "value": false
-                    },
-                    "children": [{
-                        "name": "ranking",
-                        "value": -1,
-                        "parent": {
-                            "name": "hasBaggage",
-                            "value": false
-                        },
-                        "children": []
-                    }]
-                }, {
-                    "name": "hasBaggage",
-                    "value": true,
-                    "parent": {
-                        "name": "isOta",
-                        "value": false
-                    },
-                    "children": [{
-                        "name": "ranking",
-                        "value": 2,
-                        "parent": {
-                            "name": "hasBaggage",
-                            "value": true
-                        },
-                        "children": []
-                    }, {
-                        "name": "isInternational",
-                        "value": false,
-                        "parent": {
-                            "name": "hasBaggage",
-                            "value": true
-                        },
-                        "children": [{
-                            "name": "ranking",
-                            "value": 3,
-                            "parent": {
-                                "name": "isInternational",
-                                "value": false
-                            },
-                            "children": []
-                        }]
-                    }, {
-                        "name": "isInternational",
-                        "value": true,
-                        "parent": {
-                            "name": "hasBaggage",
-                            "value": true
-                        },
-                        "children": [{
-                            "name": "ranking",
-                            "value": 4,
-                            "parent": {
-                                "name": "isInternational",
-                                "value": true
-                            },
-                            "children": []
-                        }]
-                    }]
-                }]
-            }, {
-                "name": "isOta",
-                "value": true,
-                "parent": {
-                    "name": "airline",
-                    "value": "azul"
-                },
-                "children": [{
-                    "name": "ranking",
-                    "value": 1,
-                    "parent": {
-                        "name": "isOta",
-                        "value": true
-                    },
-                    "children": []
-                }, {
-                    "name": "hasBaggage",
-                    "value": true,
-                    "parent": {
-                        "name": "isOta",
-                        "value": true
-                    },
-                    "children": []
-                }]
-            }]
-        }, {
+            "id": "gol-airline-gol",
             "name": "airline",
             "value": "gol",
+            "path": "gol-airline-gol",
             "parent": {
+                "id": "root",
                 "name": "root",
-                "value": null
+                "value": null,
+                "path": null
             },
             "children": [{
+                "id": "gol-isOta-true",
                 "name": "isOta",
                 "value": true,
+                "path": "gol-airline-gol~gol-isOta-true",
                 "parent": {
+                    "id": "gol-airline-gol",
                     "name": "airline",
-                    "value": "gol"
+                    "value": "gol",
+                    "path": "gol-airline-gol"
                 },
-                "children": []
+                "children": [{
+                    "id": "gol-hasBaggage-true",
+                    "name": "hasBaggage",
+                    "value": true,
+                    "path": "gol-airline-gol~gol-isOta-true~gol-hasBaggage-true",
+                    "parent": {
+                        "id": "gol-isOta-true",
+                        "name": "isOta",
+                        "value": true,
+                        "path": "gol-airline-gol~gol-isOta-true"
+                    },
+                    "children": [{
+                        "id": "gol-isInternational-false",
+                        "name": "isInternational",
+                        "value": false,
+                        "path": "gol-airline-gol~gol-isOta-true~gol-hasBaggage-true~gol-isInternational-false",
+                        "parent": {
+                            "id": "gol-hasBaggage-true",
+                            "name": "hasBaggage",
+                            "value": true,
+                            "path": "gol-airline-gol~gol-isOta-true~gol-hasBaggage-true"
+                        },
+                        "children": [{
+                            "id": "gol-ranking-3",
+                            "name": "ranking",
+                            "value": 3,
+                            "path": "gol-airline-gol~gol-isOta-true~gol-hasBaggage-true~gol-isInternational-false~gol-ranking-3",
+                            "parent": {
+                                "id": "gol-isInternational-false",
+                                "name": "isInternational",
+                                "value": false,
+                                "path": "gol-airline-gol~gol-isOta-true~gol-hasBaggage-true~gol-isInternational-false"
+                            },
+                            "children": []
+                        }]
+                    }]
+                }, {
+                    "id": "gol-hasBaggage-false",
+                    "name": "hasBaggage",
+                    "value": false,
+                    "path": "gol-airline-gol~gol-isOta-true~gol-hasBaggage-false",
+                    "parent": {
+                        "id": "gol-isOta-true",
+                        "name": "isOta",
+                        "value": true,
+                        "path": "gol-airline-gol~gol-isOta-true"
+                    },
+                    "children": [{
+                        "id": "gol-isInternational-true",
+                        "name": "isInternational",
+                        "value": true,
+                        "path": "gol-airline-gol~gol-isOta-true~gol-hasBaggage-false~gol-isInternational-true",
+                        "parent": {
+                            "id": "gol-hasBaggage-false",
+                            "name": "hasBaggage",
+                            "value": false,
+                            "path": "gol-airline-gol~gol-isOta-true~gol-hasBaggage-false"
+                        },
+                        "children": [{
+                            "id": "gol-ranking--1",
+                            "name": "ranking",
+                            "value": -1,
+                            "path": "gol-airline-gol~gol-isOta-true~gol-hasBaggage-false~gol-isInternational-true~gol-ranking--1",
+                            "parent": {
+                                "id": "gol-isInternational-true",
+                                "name": "isInternational",
+                                "value": true,
+                                "path": "gol-airline-gol~gol-isOta-true~gol-hasBaggage-false~gol-isInternational-true"
+                            },
+                            "children": []
+                        }]
+                    }]
+                }]
             }, {
-                "name": "isOta",
-                "value": false,
+                "id": "gol-isMiles-true",
+                "name": "isMiles",
+                "value": true,
+                "path": "gol-airline-gol~gol-isMiles-true",
                 "parent": {
+                    "id": "gol-airline-gol",
                     "name": "airline",
-                    "value": "gol"
+                    "value": "gol",
+                    "path": "gol-airline-gol"
                 },
-                "children": []
+                "children": [{
+                    "id": "gol-hasBaggage-true",
+                    "name": "hasBaggage",
+                    "value": true,
+                    "path": "gol-airline-gol~gol-isMiles-true~gol-hasBaggage-true",
+                    "parent": {
+                        "id": "gol-isMiles-true",
+                        "name": "isMiles",
+                        "value": true,
+                        "path": "gol-airline-gol~gol-isMiles-true"
+                    },
+                    "children": [{
+                        "id": "gol-isInternational-true",
+                        "name": "isInternational",
+                        "value": true,
+                        "path": "gol-airline-gol~gol-isMiles-true~gol-hasBaggage-true~gol-isInternational-true",
+                        "parent": {
+                            "id": "gol-hasBaggage-true",
+                            "name": "hasBaggage",
+                            "value": true,
+                            "path": "gol-airline-gol~gol-isMiles-true~gol-hasBaggage-true"
+                        },
+                        "children": [{
+                            "id": "gol-ranking-4",
+                            "name": "ranking",
+                            "value": 4,
+                            "path": "gol-airline-gol~gol-isMiles-true~gol-hasBaggage-true~gol-isInternational-true~gol-ranking-4",
+                            "parent": {
+                                "id": "gol-isInternational-true",
+                                "name": "isInternational",
+                                "value": true,
+                                "path": "gol-airline-gol~gol-isMiles-true~gol-hasBaggage-true~gol-isInternational-true"
+                            },
+                            "children": []
+                        }]
+                    }]
+                }]
             }]
         }]
     }
